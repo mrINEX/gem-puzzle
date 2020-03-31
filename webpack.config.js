@@ -14,7 +14,7 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: 'GAME',
-      filename: '../index.html'
+      filename: 'index.html', // [duild]: filename: '../index.html'
     }),
     new MiniCssExtractPlugin({
       filename: 'style.css'
