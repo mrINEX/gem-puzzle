@@ -1,3 +1,45 @@
 body {
     background-color: rgb(112, 219, 11);
+    text-align: center;
+}
+
+.square {
+    width: 100px;
+    height: 100px;
+    background-color: rgb(54, 211, 164);
+    border: 1px solid black;
+    margin: 1px;
+    font-size: xx-large;
+}
+
+.wrapperActiveButton,
+.wrapperStepsTime,
+.wrapperInfo,
+.wrapperOtherSize {
+    display: inline-flex;
+    justify-content: space-evenly;
+    font-size: larger;
+}
+
+.wrapperOtherSize {
+    margin: 20px 0;
+}
+
+.wrapperArea {
+    display: inline-flex;
+    flex-wrap: wrap;
+}
+
+.container {
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.emptySquare {
+    background-color: darkcyan;
+}
+
+.activeButton {
+    cursor: pointer;
+    font-size: larger;
 }
