@@ -1,5 +1,6 @@
 const { create } = require('./js/createHtml');
-const { shuffle } = require('./js/shuffle');
+const { shuffleRun } = require('./js/shuffle');
+const { moveTile } = require('./js/moveTile');
 
 let stopIntervalSeconds = setInterval(() => {
     let secondsSpan = document.querySelector('.time').childNodes[3];
@@ -19,14 +20,15 @@ let stopIntervalSeconds = setInterval(() => {
 }, 1000);
 
 create(4);
+shuffleRun(document.querySelectorAll('.square'));
+document.querySelector('.wrapperArea').addEventListener('click', moveTile);
 
 document.querySelector('input').addEventListener('change', (event) => {
-    document.querySelector('.wrapperArea').remove();
     document.querySelector('.wrapperStepsTime').remove();
+    document.querySelector('.wrapperArea').remove();
     document.querySelector('.wrapperInfo').remove();
     create(event.srcElement.value);
+    shuffleRun(document.querySelectorAll('.square'));
     event.srcElement.value = '';
+    document.querySelector('.wrapperArea').addEventListener('click', moveTile);
 });
-
-let mix = document.querySelectorAll('.square');
-console.log(mix);

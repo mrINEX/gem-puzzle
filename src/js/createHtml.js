@@ -35,9 +35,7 @@ function create(size) {
             let div = document.createElement('div');
             div.setAttribute('class', 'square');
             if(i !== 0) {
-                div.innerHTML = `<span>${i}</span>`;
-            } else {
-                div.classList.add('emptySquare');
+                div.innerHTML = i;
             }
             wrapperArea.append(div);
         }
