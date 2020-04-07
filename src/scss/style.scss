@@ -1,15 +1,18 @@
 body {
-    background-color: rgb(112, 219, 11);
+    background-color: #36d655;
     text-align: center;
+    font-family: monospace;
+    font-weight: bold;
 }
 
 .square {
     width: 100px;
     height: 100px;
-    background-color: rgb(54, 211, 164);
+    background-color: #e8df37;
     border: 1px solid black;
     margin: 1px;
     font-size: xx-large;
+    line-height: 100px;
 }
 
 .wrapperActiveButton,
@@ -36,10 +39,12 @@ body {
 }
 
 .emptySquare {
-    background-color: darkcyan;
+    background-color: #094848;
 }
 
 .activeButton {
     cursor: pointer;
     font-size: larger;
+    font-family: monospace;
+    font-weight: bold;
 }
