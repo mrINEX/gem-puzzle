@@ -1,4 +1,9 @@
 const activeButton = ['stir and start', 'stop', 'save', 'results'];
+const message = `Hooray! You solved the puzzle in 
+<span class="timeWin"></span> 
+and 
+<span class="stepsWin"></span> 
+moves`;
 
 let container = document.createElement('div');
 container.setAttribute('class', 'container');
@@ -52,6 +57,11 @@ let wrapperOtherSize = document.createElement('div');
 wrapperOtherSize.setAttribute('class', 'wrapperOtherSize');
 wrapperOtherSize.innerHTML = `<span>Other size: <input placeholder='enter number'/></span>`;
 container.append(wrapperOtherSize);
+
+let wrapperAlertWin = document.createElement('div');
+wrapperAlertWin.setAttribute('class', 'wrapperAlertWin hidden');
+wrapperAlertWin.innerHTML = `<div class="alertWin">${message}</div>`;
+container.append(wrapperAlertWin);
 
 module.exports = {
     create,

@@ -35,7 +35,7 @@ document.querySelector('input').addEventListener('change', (event) => {
         setTimeout(() => {
             event.srcElement.value = '';
             document.querySelector('input').removeAttribute('style');
-        }, 2000);
+        }, 1500);
     }
 });
 
