@@ -12,6 +12,17 @@ let stopIntervalSeconds = setInterval(timeRun, 1000);
 create(4);
 shuffleRun(document.querySelectorAll('.square'));
 markDraggable();
+
+if(localStorage.getItem('stepsTime') !== null) {
+    document.querySelector('.wrapperStepsTime').outerHTML = localStorage.getItem('stepsTime');
+}
+if(localStorage.getItem('info') !== null) {
+    document.querySelector('.wrapperInfo').outerHTML = localStorage.getItem('info');
+}
+if(localStorage.getItem('area') !== null) {
+    document.querySelector('.wrapperArea').outerHTML = localStorage.getItem('area');
+}
+
 let listenAreas;
 let activeButtons = document.querySelector('.wrapperActiveButton');
 listenAreas = document.querySelector('.wrapperArea');
@@ -59,6 +70,12 @@ activeButtons.addEventListener('click', ({target}) => {
         listenAreas = document.querySelector('.wrapperArea');
         listenAreas.addEventListener('click', moveTile);
         stopIntervalSeconds = setInterval(timeRun, 1000);
+    }
+
+    if(target.textContent === 'save') {
+        localStorage.setItem('stepsTime', document.querySelector('.wrapperStepsTime').outerHTML);
+        localStorage.setItem('area', document.querySelector('.wrapperArea').outerHTML);
+        localStorage.setItem('info', document.querySelector('.wrapperInfo').outerHTML);
     }
 })
 
