@@ -16,10 +16,9 @@ function checkWin() {
         stepsWin.textContent = steps.textContent;
         let show = document.querySelector('.wrapperAlertWin');
         show.classList.remove('hidden');
-        document.addEventListener('click', function remove() {
+        setTimeout(() => {
             show.classList.add('hidden');
-        });
-        document.removeEventListener('click', remove);
+        }, 3000);
     }
 }
 
