@@ -32,8 +32,10 @@ function create(size) {
     wrapperStepsTime.append(spanSteps, spanTime);
 
     function sizeArea(size) {
+        localStorage.setItem('area-size', size);
+
         const containerArea = document.createElement('div');
-        containerArea.setAttribute('class', 'conteiner-area');
+        containerArea.setAttribute('class', 'container-area');
         let wrapperArea = document.createElement('div');
         wrapperArea.setAttribute('class', 'wrapperArea');
         containerArea.append(wrapperArea);

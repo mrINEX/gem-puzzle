@@ -20,6 +20,20 @@ body {
   display: flex;
   justify-content: center;
   align-items: center; }
+  @media (max-width: 768px) {
+    .square {
+      width: 60px;
+      height: 60px;
+      font-size: x-large; } }
+  @media (max-width: 414px) {
+    .square {
+      width: 40px;
+      height: 40px;
+      font-size: large; } }
+
+@media (max-width: 414px) {
+  .wrapperActiveButton {
+    flex-direction: column; } }
 
 .wrapperAlertWin {
   background-color: #b9b8a3c2;

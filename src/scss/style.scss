@@ -1,3 +1,6 @@
+@import "abstract/constants";
+@import "abstract/mixins";
+
 body {
     background-color: #36d655;
     text-align: center;
@@ -22,6 +25,24 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @include media-tablet {
+        width: 60px;
+        height: 60px;
+        font-size: x-large;
+    }
+
+    @include media-mobile {
+        width: 40px;
+        height: 40px;
+        font-size: large;
+    }
+}
+
+.wrapperActiveButton {
+    @include media-mobile {
+        flex-direction: column;
+    }
 }
 
 .wrapperAlertWin {

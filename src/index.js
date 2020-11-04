@@ -9,7 +9,7 @@ const { checkWin } = require('./js/checkWin');
 
 let stopIntervalSeconds = setInterval(timeRun, 1000);
 
-create(4);
+create(localStorage.getItem('area-size') || 4);
 shuffleRun(document.querySelectorAll('.square'));
 markDraggable();
 
@@ -32,7 +32,7 @@ document.querySelector('input').addEventListener('change', (event) => {
     if(isFinite(event.target.value) && event.target.value > 2 && event.target.value < 9) {
         listenAreas.removeEventListener('click', moveTile);
         document.querySelector('.wrapperStepsTime').remove();
-        document.querySelector('.wrapperArea').remove();
+        document.querySelector('.container-area').remove();
         document.querySelector('.wrapperInfo').remove();
         create(event.target.value);
         shuffleRun(document.querySelectorAll('.square'));
@@ -78,6 +78,19 @@ activeButtons.addEventListener('click', ({target}) => {
         localStorage.setItem('info', document.querySelector('.wrapperInfo').outerHTML);
     }
 })
+
+
+window.onresize = () => {
+    const area = document.querySelector('.wrapperArea');
+    const square = document.querySelector('.square');
+    const size = localStorage.getItem('area-size');
+
+    const widthSquare = square.getBoundingClientRect().width;
+    let template = `width: ${Number(size) * widthSquare + size*2}px;`;
+    template += `height: ${Number(size) * widthSquare + size*2}px;`;
+
+    area.setAttribute('style', template);
+}
 
 
 let dragged;
