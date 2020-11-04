@@ -15,8 +15,8 @@ body {
 }
 
 .square {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     background-color: #e8df37;
     border: 1px solid black;
     margin: 1px;
@@ -26,15 +26,20 @@ body {
     justify-content: center;
     align-items: center;
 
+    @include media-laptop {
+        width: 80px;
+        height: 80px;
+    }
+
     @include media-tablet {
-        width: 60px;
-        height: 60px;
+        width: 40px;
+        height: 40px;
         font-size: x-large;
     }
 
     @include media-mobile {
-        width: 40px;
-        height: 40px;
+        width: 30px;
+        height: 30px;
         font-size: large;
     }
 }
@@ -100,6 +105,12 @@ body {
 
 .draggable-tile {
     cursor: pointer;
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: top 1s, left 1s, right 1s, bottom 1s;
 }
 
 .draggable-tile:hover {

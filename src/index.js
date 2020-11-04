@@ -13,23 +13,13 @@ create(localStorage.getItem('area-size') || 4);
 shuffleRun(document.querySelectorAll('.square'));
 markDraggable();
 
-// if(localStorage.getItem('stepsTime') !== null) {
-//     document.querySelector('.wrapperStepsTime').outerHTML = localStorage.getItem('stepsTime');
-// }
-// if(localStorage.getItem('info') !== null) {
-//     document.querySelector('.wrapperInfo').outerHTML = localStorage.getItem('info');
-// }
-// if(localStorage.getItem('area') !== null) {
-//     document.querySelector('.wrapperArea').outerHTML = localStorage.getItem('area');
-// }
-
 let listenAreas;
-let activeButtons = document.querySelector('.wrapperActiveButton');
+const activeButtons = document.querySelector('.wrapperActiveButton');
 listenAreas = document.querySelector('.wrapperArea');
 listenAreas.addEventListener('click', moveTile);
 
 document.querySelector('input').addEventListener('change', (event) => {
-    if(isFinite(event.target.value) && event.target.value > 2 && event.target.value < 9) {
+    if (isFinite(event.target.value) && event.target.value > 2 && event.target.value < 9) {
         listenAreas.removeEventListener('click', moveTile);
         document.querySelector('.wrapperStepsTime').remove();
         document.querySelector('.container-area').remove();
@@ -50,15 +40,14 @@ document.querySelector('input').addEventListener('change', (event) => {
     }
 });
 
-activeButtons.addEventListener('click', ({target}) => {
-
-    if(target.textContent === 'stop') {
+activeButtons.addEventListener('click', ({ target }) => {
+    if (target.textContent === 'stop') {
         clearInterval(stopIntervalSeconds);
         listenAreas.removeEventListener('click', moveTile);
         removeDraggableAll();
     }
 
-    if(target.textContent === 'stir and start') {
+    if (target.textContent === 'stir and start') {
         listenAreas.removeEventListener('click', moveTile);
         document.querySelector('.wrapperStepsTime').remove();
         document.querySelector('.wrapperArea').remove();
@@ -72,12 +61,12 @@ activeButtons.addEventListener('click', ({target}) => {
         stopIntervalSeconds = setInterval(timeRun, 1000);
     }
 
-    if(target.textContent === 'save') {
+    if (target.textContent === 'save') {
         localStorage.setItem('stepsTime', document.querySelector('.wrapperStepsTime').outerHTML);
         localStorage.setItem('area', document.querySelector('.wrapperArea').outerHTML);
         localStorage.setItem('info', document.querySelector('.wrapperInfo').outerHTML);
     }
-})
+});
 
 
 window.onresize = () => {
@@ -86,28 +75,30 @@ window.onresize = () => {
     const size = localStorage.getItem('area-size');
 
     const widthSquare = square.getBoundingClientRect().width;
-    let template = `width: ${Number(size) * widthSquare + size*2}px;`;
-    template += `height: ${Number(size) * widthSquare + size*2}px;`;
+    let template = `width: ${Number(size) * widthSquare + size * 2}px;`;
+    template += `height: ${Number(size) * widthSquare + size * 2}px;`;
 
     area.setAttribute('style', template);
-}
+};
 
 
 let dragged;
-document.addEventListener("dragstart", ({target}) => {
+document.addEventListener('dragstart', ({ target }) => {
     dragged = target;
 });
-document.addEventListener("dragover", (event) => {
+document.addEventListener('dragover', (event) => {
     event.preventDefault();
 });
-document.addEventListener("drop", ({target}) => {
-    if(target.classList.contains("emptySquare") && dragged.hasAttribute('draggable')) {
-        let outerTarget = target.outerHTML;
-        target.outerHTML = dragged.outerHTML;
-        dragged.outerHTML = outerTarget;
-        removeDraggableAll();
-        markDraggable();
-        addStep();
-        checkWin();
+document.addEventListener('drop', ({ target }) => {
+    if (target.classList.contains('emptySquare') && dragged.hasAttribute('draggable')) {
+        setTimeout(() => {
+            const outerTarget = target.outerHTML;
+            target.outerHTML = dragged.outerHTML;
+            dragged.outerHTML = outerTarget;
+            removeDraggableAll();
+            markDraggable();
+            addStep();
+            checkWin();
+        }, 1000);
     }
 });

@@ -10,8 +10,8 @@ body {
   padding: 20px; }
 
 .square {
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   background-color: #e8df37;
   border: 1px solid black;
   margin: 1px;
@@ -20,15 +20,19 @@ body {
   display: flex;
   justify-content: center;
   align-items: center; }
-  @media (max-width: 768px) {
+  @media (max-width: 1200px) {
     .square {
-      width: 60px;
-      height: 60px;
-      font-size: x-large; } }
-  @media (max-width: 414px) {
+      width: 80px;
+      height: 80px; } }
+  @media (max-width: 768px) {
     .square {
       width: 40px;
       height: 40px;
+      font-size: x-large; } }
+  @media (max-width: 414px) {
+    .square {
+      width: 30px;
+      height: 30px;
       font-size: large; } }
 
 @media (max-width: 414px) {
@@ -81,7 +85,13 @@ body {
   font-weight: bold; }
 
 .draggable-tile {
-  cursor: pointer; }
+  cursor: pointer;
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: top 1s, left 1s, right 1s, bottom 1s; }
 
 .draggable-tile:hover {
   border: 2px solid black; }
