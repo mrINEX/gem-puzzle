@@ -32,10 +32,13 @@ function create(size) {
     wrapperStepsTime.append(spanSteps, spanTime);
 
     function sizeArea(size) {
+        const containerArea = document.createElement('div');
+        containerArea.setAttribute('class', 'conteiner-area');
         let wrapperArea = document.createElement('div');
         wrapperArea.setAttribute('class', 'wrapperArea');
-        wrapperArea.setAttribute('style', `width: ${Number(size +'00') + size*4}px`);
-        container.append(wrapperArea);
+        containerArea.append(wrapperArea);
+        container.append(containerArea);
+
         for(let i = 0; i < size**2; i += 1) {
             let div = document.createElement('div');
             div.setAttribute('class', 'square');
@@ -44,6 +47,9 @@ function create(size) {
             }
             wrapperArea.append(div);
         }
+        const square = document.querySelector('.square');
+        const widthSquare = square.getBoundingClientRect().width;
+        wrapperArea.setAttribute('style', `width: ${Number(size) * widthSquare + size*2}px; height: ${Number(size) * widthSquare + size*2}px;`);
 
         let wrapperInfo = document.createElement('div');
         wrapperInfo.setAttribute('class', 'wrapperInfo');

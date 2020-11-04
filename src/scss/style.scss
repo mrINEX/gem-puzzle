@@ -5,14 +5,23 @@ body {
     font-weight: bold;
 }
 
+.container {
+    display: inline-flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
 .square {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     background-color: #e8df37;
     border: 1px solid black;
     margin: 1px;
     font-size: xx-large;
-    line-height: 100px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .wrapperAlertWin {
@@ -44,7 +53,7 @@ body {
 .wrapperInfo,
 .wrapperOtherSize {
     display: inline-flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     font-size: larger;
 }
 
@@ -57,11 +66,6 @@ body {
     flex-wrap: wrap;
 }
 
-.container {
-    display: inline-flex;
-    flex-direction: column;
-}
-
 .emptySquare {
     background-color: #094848;
 }
@@ -71,4 +75,12 @@ body {
     font-size: larger;
     font-family: monospace;
     font-weight: bold;
+}
+
+.draggable-tile {
+    cursor: pointer;
+}
+
+.draggable-tile:hover {
+    border: 2px solid black;
 }

@@ -13,15 +13,15 @@ create(4);
 shuffleRun(document.querySelectorAll('.square'));
 markDraggable();
 
-if(localStorage.getItem('stepsTime') !== null) {
-    document.querySelector('.wrapperStepsTime').outerHTML = localStorage.getItem('stepsTime');
-}
-if(localStorage.getItem('info') !== null) {
-    document.querySelector('.wrapperInfo').outerHTML = localStorage.getItem('info');
-}
-if(localStorage.getItem('area') !== null) {
-    document.querySelector('.wrapperArea').outerHTML = localStorage.getItem('area');
-}
+// if(localStorage.getItem('stepsTime') !== null) {
+//     document.querySelector('.wrapperStepsTime').outerHTML = localStorage.getItem('stepsTime');
+// }
+// if(localStorage.getItem('info') !== null) {
+//     document.querySelector('.wrapperInfo').outerHTML = localStorage.getItem('info');
+// }
+// if(localStorage.getItem('area') !== null) {
+//     document.querySelector('.wrapperArea').outerHTML = localStorage.getItem('area');
+// }
 
 let listenAreas;
 let activeButtons = document.querySelector('.wrapperActiveButton');
@@ -29,22 +29,22 @@ listenAreas = document.querySelector('.wrapperArea');
 listenAreas.addEventListener('click', moveTile);
 
 document.querySelector('input').addEventListener('change', (event) => {
-    if(isFinite(event.srcElement.value) && event.srcElement.value > 2 && event.srcElement.value < 9) {
+    if(isFinite(event.target.value) && event.target.value > 2 && event.target.value < 9) {
         listenAreas.removeEventListener('click', moveTile);
         document.querySelector('.wrapperStepsTime').remove();
         document.querySelector('.wrapperArea').remove();
         document.querySelector('.wrapperInfo').remove();
-        create(event.srcElement.value);
+        create(event.target.value);
         shuffleRun(document.querySelectorAll('.square'));
         markDraggable();
-        event.srcElement.value = '';
+        event.target.value = '';
         listenAreas = document.querySelector('.wrapperArea');
         listenAreas.addEventListener('click', moveTile);
     } else {
-        event.srcElement.value = 'from 3 to 8';
+        event.target.value = 'from 3 to 8';
         document.querySelector('input').setAttribute('style', 'color:red;');
         setTimeout(() => {
-            event.srcElement.value = '';
+            event.target.value = '';
             document.querySelector('input').removeAttribute('style');
         }, 1500);
     }
