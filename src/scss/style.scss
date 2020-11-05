@@ -94,6 +94,12 @@ body {
 
 .emptySquare {
     background-color: #094848;
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: top 1s, left 1s, right 1s, bottom 1s;
 }
 
 .activeButton {
