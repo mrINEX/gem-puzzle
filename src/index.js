@@ -83,22 +83,50 @@ window.onresize = () => {
 
 
 let dragged;
+let draggedClient;
 document.addEventListener('dragstart', ({ target }) => {
+    draggedClient = target.getBoundingClientRect();
     dragged = target;
 });
 document.addEventListener('dragover', (event) => {
     event.preventDefault();
 });
 document.addEventListener('drop', ({ target }) => {
+    const droppedClient = target.getBoundingClientRect();
+    console.log('dragged:', draggedClient);
+    console.log('dropped:', droppedClient);
     if (target.classList.contains('emptySquare') && dragged.hasAttribute('draggable')) {
         setTimeout(() => {
+            target.removeAttribute('style');
+            dragged.removeAttribute('style');
+
             const outerTarget = target.outerHTML;
             target.outerHTML = dragged.outerHTML;
             dragged.outerHTML = outerTarget;
+
             removeDraggableAll();
             markDraggable();
             addStep();
             checkWin();
         }, 1000);
+        if (draggedClient.y === droppedClient.y) {
+            if (draggedClient.x > droppedClient.x) {
+                target.style.left = `${droppedClient.width + 2}px`;
+                dragged.style.left = `-${droppedClient.width + 2}px`;
+            }
+            if (draggedClient.x < droppedClient.x) {
+                target.style.left = `-${droppedClient.width + 2}px`;
+                dragged.style.left = `${droppedClient.width + 2}px`;
+            }
+        } else {
+            if (draggedClient.y > droppedClient.y) {
+                target.style.top = `${droppedClient.width + 2}px`;
+                dragged.style.top = `-${droppedClient.width + 2}px`;
+            }
+            if (draggedClient.y < droppedClient.y) {
+                target.style.top = `-${droppedClient.width + 2}px`;
+                dragged.style.top = `${droppedClient.width + 2}px`;
+            }
+        }
     }
 });

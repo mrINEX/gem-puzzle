@@ -10,7 +10,6 @@ function moveTile({ target }) {
         if (tiles[i].textContent === target.textContent) {
             if (tiles[i + 1] !== undefined && tiles[i + 1].textContent === '') {
                 if ((i + 1) % Math.sqrt(tiles.length) !== 0) {
-                    console.log('1');
                     const element = tiles[i];
                     const emptySquare = tiles[i + 1];
                     setTimeout(() => {
@@ -30,7 +29,6 @@ function moveTile({ target }) {
             }
             if (tiles[i - 1] !== undefined && tiles[i - 1].textContent === '') {
                 if ((i - 1) % Math.sqrt(tiles.length) !== Math.sqrt(tiles.length) - 1) {
-                    console.log('2');
                     const element = tiles[i];
                     const emptySquare = tiles[i - 1];
                     setTimeout(() => {
@@ -49,7 +47,6 @@ function moveTile({ target }) {
                 }
             }
             if (tiles[i + Math.sqrt(tiles.length)] !== undefined && tiles[i + Math.sqrt(tiles.length)].textContent === '') {
-                console.log('3');
                 const element = tiles[i];
                 const empty = tiles[i + Math.sqrt(tiles.length)];
                 setTimeout(() => {
@@ -67,7 +64,6 @@ function moveTile({ target }) {
                 addStep();
             }
             if (tiles[i - Math.sqrt(tiles.length)] !== undefined && tiles[i - Math.sqrt(tiles.length)].textContent === '') {
-                console.log('4');
                 const element = tiles[i];
                 const empty = tiles[i - Math.sqrt(tiles.length)];
                 setTimeout(() => {
