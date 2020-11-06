@@ -84,7 +84,12 @@ activeButtons.addEventListener('click', ({ target }) => {
     }
 
     if (target.textContent === 'results') {
-        console.log('before:', window.innerWidth, window.innerHeight);
+        const results = document.querySelector('.results-background');
+        results.onclick = () => {
+            results.classList.add('hidden');
+        };
+
+        results.classList.remove('hidden');
     }
 });
 

@@ -71,6 +71,10 @@ wrapperAlertWin.setAttribute('class', 'wrapperAlertWin hidden');
 wrapperAlertWin.innerHTML = `<div class="alertWin">${message}</div>`;
 container.append(wrapperAlertWin);
 
+const resultsBackground = document.createElement('div');
+resultsBackground.classList.add('results-background', 'hidden');
+document.querySelector('body').append(resultsBackground);
+
 module.exports = {
     create
 };

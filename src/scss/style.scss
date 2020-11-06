@@ -122,3 +122,21 @@ body {
 .draggable-tile:hover {
     border: 2px solid black;
 }
+
+.results-background {
+    position: fixed;
+    z-index: 15;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(41, 41, 41, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
