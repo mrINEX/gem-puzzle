@@ -6,12 +6,27 @@ const { markDraggable } = require('./js/markDrug');
 const { removeDraggableAll } = require('./js/removeDraggableAll');
 const { addStep } = require('./js/addSteps');
 const { checkWin } = require('./js/checkWin');
+const { resizes } = require('./js/resizes');
 
-let stopIntervalSeconds = setInterval(timeRun, 1000);
+const soundMove = new Audio('./src/sounds/notification-sound.mp3');
 
 create(localStorage.getItem('area-size') || 4);
 shuffleRun(document.querySelectorAll('.square'));
 markDraggable();
+
+const stepsTimeStorage = localStorage.getItem('stepsTime');
+const infoStorage = localStorage.getItem('info');
+const areaStorage = localStorage.getItem('area');
+if (stepsTimeStorage && infoStorage && areaStorage) {
+    document.querySelector('.wrapperStepsTime').outerHTML = stepsTimeStorage;
+    document.querySelector('.wrapperInfo').outerHTML = infoStorage;
+    document.querySelector('.container-area').outerHTML = areaStorage;
+    localStorage.setItem('area-size', localStorage.getItem('sizeStorage'));
+
+    resizes();
+}
+
+let stopIntervalSeconds = setInterval(timeRun, 1000);
 
 let listenAreas;
 const activeButtons = document.querySelector('.wrapperActiveButton');
@@ -63,23 +78,18 @@ activeButtons.addEventListener('click', ({ target }) => {
 
     if (target.textContent === 'save') {
         localStorage.setItem('stepsTime', document.querySelector('.wrapperStepsTime').outerHTML);
-        localStorage.setItem('area', document.querySelector('.wrapperArea').outerHTML);
+        localStorage.setItem('area', document.querySelector('.container-area').outerHTML);
         localStorage.setItem('info', document.querySelector('.wrapperInfo').outerHTML);
+        localStorage.setItem('sizeStorage', localStorage.getItem('area-size'));
+    }
+
+    if (target.textContent === 'results') {
+        console.log('before:', window.innerWidth, window.innerHeight);
     }
 });
 
 
-window.onresize = () => {
-    const area = document.querySelector('.wrapperArea');
-    const square = document.querySelector('.square');
-    const size = localStorage.getItem('area-size');
-
-    const widthSquare = square.getBoundingClientRect().width;
-    let template = `width: ${Number(size) * widthSquare + size * 2}px;`;
-    template += `height: ${Number(size) * widthSquare + size * 2}px;`;
-
-    area.setAttribute('style', template);
-};
+window.onresize = resizes;
 
 
 let dragged;
@@ -93,9 +103,9 @@ document.addEventListener('dragover', (event) => {
 });
 document.addEventListener('drop', ({ target }) => {
     const droppedClient = target.getBoundingClientRect();
-    console.log('dragged:', draggedClient);
-    console.log('dropped:', droppedClient);
+
     if (target.classList.contains('emptySquare') && dragged.hasAttribute('draggable')) {
+        soundMove.play();
         setTimeout(() => {
             target.removeAttribute('style');
             dragged.removeAttribute('style');
