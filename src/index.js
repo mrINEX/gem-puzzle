@@ -96,6 +96,8 @@ activeButtons.addEventListener('click', ({ target }) => {
                 el.textContent = result;
                 resultsContent.append(el);
             });
+        } else {
+            resultsContent.textContent = 'no better results';
         }
         results.classList.remove('hidden');
     }

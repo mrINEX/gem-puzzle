@@ -64,9 +64,6 @@ body {
   font-size: 4vw;
   padding: 5%; }
 
-.hidden {
-  display: none; }
-
 .wrapperActiveButton,
 .wrapperStepsTime,
 .wrapperInfo,
