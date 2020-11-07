@@ -73,6 +73,25 @@ container.append(wrapperAlertWin);
 
 const resultsBackground = document.createElement('div');
 resultsBackground.classList.add('results-background', 'hidden');
+resultsBackground.onclick = ({ target }) => {
+    if (target.classList.contains('results-background')) {
+        resultsBackground.classList.add('hidden');
+    }
+};
+
+const close = document.createElement('span');
+close.textContent = 'x';
+close.classList.add('close-results');
+close.onclick = () => {
+    resultsBackground.classList.add('hidden');
+};
+
+const resultsContent = document.createElement('div');
+resultsContent.classList.add('results-content');
+resultsContent.innerHTML = '<h2>Top results</h2><div class="results-gem"></div>';
+
+resultsBackground.append(resultsContent);
+resultsContent.append(close);
 document.querySelector('body').append(resultsBackground);
 
 module.exports = {

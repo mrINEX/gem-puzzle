@@ -1,3 +1,6 @@
+const { getTime } = require('./getDateTime');
+const { storage } = require('./storage');
+
 function checkWin() {
     const tiles = document.querySelectorAll('.square');
     const currentArray = [];
@@ -16,9 +19,13 @@ function checkWin() {
         stepsWin.textContent = steps.textContent;
         const show = document.querySelector('.wrapperAlertWin');
         show.classList.remove('hidden');
+
+        storage(`${getTime()} <> ${time.textContent} ${steps.textContent}`);
+
         setTimeout(() => {
             show.classList.add('hidden');
         }, 3000);
+        return true;
     }
 }
 

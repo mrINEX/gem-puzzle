@@ -19,7 +19,13 @@ body {
   box-sizing: border-box;
   display: flex;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: top 1s, left 1s, right 1s, bottom 1s; }
   @media (max-width: 1200px) {
     .square {
       width: 80px;
@@ -45,7 +51,8 @@ body {
   height: 100%;
   position: fixed;
   top: 0;
-  left: 0; }
+  left: 0;
+  z-index: 55; }
 
 .alertWin {
   position: relative;
@@ -76,13 +83,7 @@ body {
   flex-wrap: wrap; }
 
 .emptySquare {
-  background-color: #094848;
-  position: relative;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  transition: top 1s, left 1s, right 1s, bottom 1s; }
+  background-color: #094848; }
 
 .activeButton {
   cursor: pointer;
@@ -91,13 +92,7 @@ body {
   font-weight: bold; }
 
 .draggable-tile {
-  cursor: pointer;
-  position: relative;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  transition: top 1s, left 1s, right 1s, bottom 1s; }
+  cursor: pointer; }
 
 .draggable-tile:hover {
   border: 2px solid black; }
@@ -117,4 +112,21 @@ body {
 
 .hidden {
   display: none; }
+
+.results-content {
+  width: 70%;
+  height: 50%;
+  background-color: white;
+  cursor: auto;
+  position: relative;
+  overflow: auto; }
+
+.close-results {
+  position: absolute;
+  right: 0;
+  top: 0;
+  cursor: pointer;
+  font-weight: 900;
+  width: 20px;
+  height: 20px; }
 

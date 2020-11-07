@@ -85,10 +85,18 @@ activeButtons.addEventListener('click', ({ target }) => {
 
     if (target.textContent === 'results') {
         const results = document.querySelector('.results-background');
-        results.onclick = () => {
-            results.classList.add('hidden');
-        };
+        const resultsContent = document.querySelector('.results-gem');
+        resultsContent.textContent = '';
 
+        const storageResults = localStorage.getItem('results-gem-puzzle');
+        if (storageResults) {
+            const arr = JSON.parse(storageResults);
+            arr.forEach((result) => {
+                const el = document.createElement('div');
+                el.textContent = result;
+                resultsContent.append(el);
+            });
+        }
         results.classList.remove('hidden');
     }
 });
@@ -111,6 +119,8 @@ document.addEventListener('drop', ({ target }) => {
 
     if (target.classList.contains('emptySquare') && dragged.hasAttribute('draggable')) {
         soundMove.play();
+        removeDraggableAll();
+
         setTimeout(() => {
             target.removeAttribute('style');
             dragged.removeAttribute('style');
@@ -119,7 +129,6 @@ document.addEventListener('drop', ({ target }) => {
             target.outerHTML = dragged.outerHTML;
             dragged.outerHTML = outerTarget;
 
-            removeDraggableAll();
             markDraggable();
             addStep();
             checkWin();
