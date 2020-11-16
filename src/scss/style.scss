@@ -31,6 +31,7 @@ body {
     right: 0;
     bottom: 0;
     transition: top 1s, left 1s, right 1s, bottom 1s;
+    z-index: 5;
 
     @include media-laptop {
         width: 80px;
@@ -97,6 +98,7 @@ body {
 
 .emptySquare {
     background-color: #094848;
+    z-index: 1;
 }
 
 .activeButton {

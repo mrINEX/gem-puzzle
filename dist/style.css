@@ -25,7 +25,8 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  transition: top 1s, left 1s, right 1s, bottom 1s; }
+  transition: top 1s, left 1s, right 1s, bottom 1s;
+  z-index: 5; }
   @media (max-width: 1200px) {
     .square {
       width: 80px;
@@ -80,7 +81,8 @@ body {
   flex-wrap: wrap; }
 
 .emptySquare {
-  background-color: #094848; }
+  background-color: #094848;
+  z-index: 1; }
 
 .activeButton {
   cursor: pointer;
